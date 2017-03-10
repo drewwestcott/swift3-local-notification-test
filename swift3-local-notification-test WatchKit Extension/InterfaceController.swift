@@ -7,9 +7,7 @@
 //
 //  Exclamation Alert by Luke Peek from the Noun Project
 import WatchKit
-import Foundation
 import UserNotifications
-
 
 class InterfaceController: WKInterfaceController, UNUserNotificationCenterDelegate {
 
@@ -31,13 +29,14 @@ class InterfaceController: WKInterfaceController, UNUserNotificationCenterDelega
         let content = UNMutableNotificationContent()
 		content.title = "Attention"
 		content.subtitle = "Times Up!"
-        content.body = "Tap the 'Finish' button to stop the being notified."
+        content.body = "Tap the 'Finish' button to stop being notified."
         
         content.categoryIdentifier = "ACTIONS"
         content.sound = UNNotificationSound.default()
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 15, repeats: false)
-        
+		
+		let randomIdentifier = Int(arc4random_uniform(25))
         let notifyRequest = UNNotificationRequest(identifier: "repeat", content: content, trigger: trigger)
         
         let center = UNUserNotificationCenter.current()
@@ -69,16 +68,6 @@ class InterfaceController: WKInterfaceController, UNUserNotificationCenterDelega
             completionHandler()
         }
     }
-    
-    
-    override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
-        super.willActivate()
-    }
-    
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
 
+	
 }

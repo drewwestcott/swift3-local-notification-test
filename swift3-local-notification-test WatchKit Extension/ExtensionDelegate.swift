@@ -13,21 +13,23 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
 
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (success, error) in
-            if success {
-                
-                let stopAction = UNNotificationAction(identifier: "FINISH", title: "Finish", options: .foreground)
-                
-                let notifCategory = UNNotificationCategory(identifier: "ACTIONS", actions: [stopAction], intentIdentifiers: [], options: UNNotificationCategoryOptions(rawValue: 0))
-                
-                center.setNotificationCategories([notifCategory])
-                print("Notifications granted")
-                
-            } else {
-                print("No authorisation")
-            }
-        }
+		let center = UNUserNotificationCenter.current()
+		center.requestAuthorization(options: [.alert, .sound]) { (success, error) in
+			if success {
+				
+				let stopAction = UNNotificationAction(identifier: "FINISH", title: "Finish", options: .foreground)
+				let anotherAction = UNNotificationAction(identifier: "ANOTHER", title: "Another", options: .foreground)
+				let dismissAction = UNNotificationAction(identifier: "DISMISS", title: "Dismiss", options: UNNotificationActionOptions(rawValue: 0))
+				
+				let notifCategory = UNNotificationCategory(identifier: "ACTIONS", actions: [stopAction,anotherAction,dismissAction], intentIdentifiers: [], options: UNNotificationCategoryOptions(rawValue: 0))
+				
+				center.setNotificationCategories([notifCategory])
+				print("Notifications granted")
+				
+			} else {
+				print("No authorisation")
+			}
+		}
 
     }
 

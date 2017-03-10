@@ -29,7 +29,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         let content = UNMutableNotificationContent()
         content.title = "Attention"
         content.subtitle = "Times Up!"
-		content.body = "Tap the 'Finish' button to stop the being notified."
+		content.body = "Tap the 'Finish' button to stop being notified."
 		
         content.categoryIdentifier = "ACTIONS"
         content.sound = UNNotificationSound.default()
