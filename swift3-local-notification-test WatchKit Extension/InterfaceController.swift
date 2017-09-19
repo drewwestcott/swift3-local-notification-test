@@ -36,7 +36,7 @@ class InterfaceController: WKInterfaceController, UNUserNotificationCenterDelega
         
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 15, repeats: false)
 		
-		let randomIdentifier = Int(arc4random_uniform(25))
+		let randomIdentifier = Int(arc4random_uniform(25)) // append this to the identifier to get notifications triggering on each 'reschedule'
         let notifyRequest = UNNotificationRequest(identifier: "repeat", content: content, trigger: trigger)
         
         let center = UNUserNotificationCenter.current()
